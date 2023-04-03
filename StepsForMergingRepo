@@ -1,0 +1,73 @@
+#Steps for merging 2 Repository
+=================================
+
+1- mkdir Kiran
+2- git clone https://github.com/Kiran0987/Repo1.git
+3- git clone https://github.com/Kiran0987/Repo2.git
+
+root@DESKTOP-5BHMD27:~/kiran# cd Repo1
+root@DESKTOP-5BHMD27:~/kiran/Repo1# ls -ltr
+total 4
+-rw-r--r-- 1 root root 21 Apr  3 22:46 repo1.sh
+root@DESKTOP-5BHMD27:~/kiran/Repo1#
+//
+
+
+
+4- cd  Repo1
+5- #Checking remotes 
+    git remote -v
+6-  git remote add Repo2 https://github.com/Kiran0987/Repo2.git
+7- root@DESKTOP-5BHMD27:~/kiran/Repo1# git remote -v
+Repo2   https://github.com/Kiran0987/Repo2.git (fetch)
+Repo2   https://github.com/Kiran0987/Repo2.git (push)
+origin  https://github.com/Kiran0987/Repo1.git (fetch)
+origin  https://github.com/Kiran0987/Repo1.git (push)
+
+8- git fetch Repo2
+
+root@DESKTOP-5BHMD27:~/kiran/Repo1#  git fetch Repo2
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), 603 bytes | 150.00 KiB/s, done.
+From https://github.com/Kiran0987/Repo2
+ * [new branch]      main       -> Repo2/main
+
+
+9- git merge Repo2/main --allow-unrelated-histories
+
+root@DESKTOP-5BHMD27:~/kiran/Repo1# git merge Repo2/main
+fatal: refusing to merge unrelated histories
+root@DESKTOP-5BHMD27:~/kiran/Repo1# git merge Repo2/main --allow-unrelated-histories
+Merge made by the 'ort' strategy.
+ repo2.sh | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 repo2.sh
+
+
+
+10- git push origin main
+
+# Create Personal Access Token
+
+# Password is ghp_2gxX0I3UwGwTGLcyOsum15h3Kc6PT4I1JRtGL
+
+root@DESKTOP-5BHMD27:~/kiran/Repo1# git push origin main
+Username for 'https://github.com': Kiran0987
+Password for 'https://Kiran0987@github.com':
+Enumerating objects: 6, done.
+Counting objects: 100% (6/6), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (5/5), 919 bytes | 306.00 KiB/s, done.
+Total 5 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/Kiran0987/Repo1.git
+   f58853d..a39f4d0  main -> main 
+   
+11- Validation 
+
+root@DESKTOP-5BHMD27:~/kiran/Repo1# ls -ltr
+total 8
+-rw-r--r-- 1 root root 21 Apr  3 22:46 repo1.sh
+-rw-r--r-- 1 root root 21 Apr  3 23:06 repo2.sh
