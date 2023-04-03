@@ -1,0 +1,85 @@
+root@DESKTOP-5BHMD27:~/test#
+root@DESKTOP-5BHMD27:~/test# git clone https://github.com/Kiran0987/reposubtree.git
+Cloning into 'reposubtree'...
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Receiving objects: 100% (3/3), done.
+root@DESKTOP-5BHMD27:~/test#
+root@DESKTOP-5BHMD27:~/test#
+root@DESKTOP-5BHMD27:~/test# cd reposubtree/
+root@DESKTOP-5BHMD27:~/test/reposubtree# ls -ltr
+total 4
+-rw-r--r-- 1 root root 18 Apr  3 23:54 testfilerepo
+root@DESKTOP-5BHMD27:~/test/reposubtree#
+root@DESKTOP-5BHMD27:~/test/reposubtree#
+root@DESKTOP-5BHMD27:~/test/reposubtree# git remote add -f spoon-knife https://github.com/Kiran0987/spoon-knife.git
+Updating spoon-knife
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), 598 bytes | 149.00 KiB/s, done.
+From https://github.com/Kiran0987/spoon-knife
+ * [new branch]      main       -> spoon-knife/main
+root@DESKTOP-5BHMD27:~/test/reposubtree#
+root@DESKTOP-5BHMD27:~/test/reposubtree#
+root@DESKTOP-5BHMD27:~/test/reposubtree# git remote -v
+origin  https://github.com/Kiran0987/reposubtree.git (fetch)
+origin  https://github.com/Kiran0987/reposubtree.git (push)
+spoon-knife     https://github.com/Kiran0987/spoon-knife.git (fetch)
+spoon-knife     https://github.com/Kiran0987/spoon-knife.git (push)
+root@DESKTOP-5BHMD27:~/test/reposubtree#
+root@DESKTOP-5BHMD27:~/test/reposubtree#
+root@DESKTOP-5BHMD27:~/test/reposubtree# git merge -s ours --no-commit --allow-unrelated-histories spoon-knife/main
+Automatic merge went well; stopped before committing as requested
+root@DESKTOP-5BHMD27:~/test/reposubtree#
+root@DESKTOP-5BHMD27:~/test/reposubtree#
+root@DESKTOP-5BHMD27:~/test/reposubtree#
+root@DESKTOP-5BHMD27:~/test/reposubtree# git read-tree --prefix=spoon-knife/ -u spoon-knife/main
+root@DESKTOP-5BHMD27:~/test/reposubtree# git fetch  spoon-knife
+root@DESKTOP-5BHMD27:~/test/reposubtree#
+root@DESKTOP-5BHMD27:~/test/reposubtree#
+root@DESKTOP-5BHMD27:~/test/reposubtree# mkdir spoon-knife
+mkdir: cannot create directory ‘spoon-knife’: File exists
+root@DESKTOP-5BHMD27:~/test/reposubtree# ls -ltr
+total 8
+-rw-r--r-- 1 root root   18 Apr  3 23:54 testfilerepo
+drwxr-xr-x 2 root root 4096 Apr  3 23:55 spoon-knife
+root@DESKTOP-5BHMD27:~/test/reposubtree# git read-tree --prefix=spoon-knife/ -u spoon-knife/main
+error: Entry 'spoon-knife/spoon-knife.txt' overlaps with 'spoon-knife/spoon-knife.txt'.  Cannot bind.
+root@DESKTOP-5BHMD27:~/test/reposubtree# git commit -m "Subtree merged in spoon-knife"
+[main e5861b9] Subtree merged in spoon-knife
+ Committer: root <root@DESKTOP-5BHMD27.localdomain>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+root@DESKTOP-5BHMD27:~/test/reposubtree# git pull -s subtree spoon-knife main
+From https://github.com/Kiran0987/spoon-knife
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+root@DESKTOP-5BHMD27:~/test/reposubtree#
+root@DESKTOP-5BHMD27:~/test/reposubtree#
+root@DESKTOP-5BHMD27:~/test/reposubtree# l s-ltr
+ls: cannot access 's-ltr': No such file or directory
+root@DESKTOP-5BHMD27:~/test/reposubtree#
+root@DESKTOP-5BHMD27:~/test/reposubtree#
+root@DESKTOP-5BHMD27:~/test/reposubtree# ls -ltr
+total 8
+-rw-r--r-- 1 root root   18 Apr  3 23:54 testfilerepo
+drwxr-xr-x 2 root root 4096 Apr  3 23:55 spoon-knife
+root@DESKTOP-5BHMD27:~/test/reposubtree# cd spoon-knife/
+root@DESKTOP-5BHMD27:~/test/reposubtree/spoon-knife#
+root@DESKTOP-5BHMD27:~/test/reposubtree/spoon-knife# ls -ltr
+total 4
+-rw-r--r-- 1 root root 1 Apr  3 23:55 spoon-knife.txt
+root@DESKTOP-5BHMD27:~/test/reposubtree/spoon-knife#
+
